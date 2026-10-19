@@ -1,5 +1,5 @@
 /** 发新版本时把这个数字加 1，激活时会删掉旧缓存。 */
-const CACHE_VERSION = 16;
+const CACHE_VERSION = 17;
 const CACHE = `jelly-brawl-v${CACHE_VERSION}`;
 
 const ASSETS = [
@@ -10,7 +10,7 @@ const ASSETS = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/apple-touch-icon.png',
-  './assets/loading-bg.jpg',
+  './assets/loading-art.jpg',
   './src/loading.js',
   './src/main.js',
   './src/config.js',

@@ -114,7 +114,7 @@
 
     .boot-label {
       left: 50%;
-      top: 76.3%;
+      top: 81.4%;
       transform: translate(-50%, -50%);
       font-size: 18px;
       font-size: clamp(13px, 2.4cqi, 28px);
@@ -124,14 +124,16 @@
     .boot-track {
       position: absolute;
       z-index: 1;
-      left: 30.8%;
-      top: 80.2%;
-      width: 37.6%;
-      height: 5.4%;
+      left: 28.5%;
+      top: 85.6%;
+      width: 42.5%;
+      height: 5.9%;
+      box-sizing: border-box;
+      border: 3px solid #0d2a86;
       border-radius: 999px;
       overflow: hidden;
-      background: linear-gradient(#163a78, #2f6fe0);
-      box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.45);
+      background: linear-gradient(#10308f, #1a46b8);
+      box-shadow: inset 0 -2px 0 rgba(110, 200, 255, 0.7), 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .boot-fill {
@@ -143,8 +145,8 @@
     }
 
     .boot-pct {
-      left: 70.4%;
-      top: 82.9%;
+      left: 72%;
+      top: 88.5%;
       transform: translateY(-50%);
       font-size: 16px;
       font-size: clamp(12px, 2.1cqi, 26px);
@@ -152,7 +154,7 @@
 
     .boot-tip {
       left: 50%;
-      top: 89.2%;
+      top: 95.6%;
       transform: translate(-50%, -50%);
       font-size: 14px;
       font-size: clamp(11px, 1.7cqi, 20px);
@@ -244,7 +246,7 @@
 <body>
   <div id="boot">
     <div id="boot-stage">
-      <img class="boot-art" src="./assets/loading-bg.jpg" alt="Jelly Brawl 果冻擂台">
+      <img class="boot-art" src="./assets/loading-art.jpg" alt="Jelly Brawl 果冻擂台">
       <p class="boot-label">正在加载资源...</p>
       <div class="boot-track" aria-hidden="true"><div class="boot-fill"></div></div>
       <p class="boot-pct">0%</p>
@@ -268,6 +270,6 @@
     document.addEventListener('gesturestart', (event) => event.preventDefault());
     document.addEventListener('contextmenu', (event) => event.preventDefault());
   </script>
-  <script type="module" src="./src/loading.js?v=16"></script>
+  <script type="module" src="./src/loading.js?v=17"></script>
 </body>
 </html>
