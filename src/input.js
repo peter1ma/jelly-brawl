@@ -30,14 +30,15 @@ function typing() {
 
 /** 屏幕坐标换成 1280×720 逻辑坐标。页面被转成横屏时也按画布自己的方向算。 */
 export function clientToLogical(canvas, clientX, clientY) {
-  const matrix = canvas.getScreenCTM();
-  const width = canvas.clientWidth || 1;
-  const height = canvas.clientHeight || 1;
-  if (matrix) {
-    const local = new DOMPoint(clientX, clientY).matrixTransform(matrix.inverse());
+  if (document.documentElement.classList.contains('turn-landscape')) {
+    // 页面顺时针转了 90°：页面里的 x 是屏幕 y，页面里的 y 是屏幕宽减屏幕 x。
+    const pageX = clientY;
+    const pageY = window.innerWidth - clientX;
+    const left = parseFloat(canvas.style.left) || 0;
+    const top = parseFloat(canvas.style.top) || 0;
     return {
-      x: (local.x / width) * CONFIG.view.width,
-      y: (local.y / height) * CONFIG.view.height,
+      x: ((pageX - left) / (canvas.clientWidth || 1)) * CONFIG.view.width,
+      y: ((pageY - top) / (canvas.clientHeight || 1)) * CONFIG.view.height,
     };
   }
   const rect = canvas.getBoundingClientRect();

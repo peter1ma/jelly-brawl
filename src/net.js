@@ -166,12 +166,16 @@ async function pingAll() {
   }
 }
 
-/** 用公共 BitTorrent 信令建房，不自建服务器。 */
+/** 用公共 MQTT 信令建房，不自建服务器。 */
 export async function openRoom(isHost, code, profile, hooks) {
   await closeRoom();
   const mod = await import(CONFIG.net.trystero);
   const joinRoom = mod.joinRoom;
-  const config = { appId: CONFIG.net.appId };
+  const config = {
+    appId: CONFIG.net.appId,
+    relayConfig: { urls: CONFIG.net.relays },
+    rtcConfig: { iceServers: CONFIG.net.stun.map((urls) => ({ urls })) },
+  };
   if (CONFIG.net.turn) config.turnConfig = CONFIG.net.turn;
   const room = await joinRoom(config, code);
   const msg = room.makeAction('msg');

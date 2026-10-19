@@ -57,7 +57,11 @@ export function bindOnline(session) {
       return;
     }
     if (data.t === 'roster' && session.role === 'guest') {
-      session.state.room = { code: data.code, players: data.players, host: false, qr: session.qr };
+      // 名字按本机重写：自己是「你」，其他人是「玩家」。
+      const players = (data.players || []).map((player) => Object.assign({}, player, {
+        name: player.id === session.selfId ? '你' : '玩家',
+      }));
+      session.state.room = { code: data.code, players, host: false, qr: session.qr };
       if (session.state.phase === 'LOBBY' || session.state.phase === 'ROOM') session.state.phase = 'ROOM';
       return;
     }

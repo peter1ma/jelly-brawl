@@ -185,8 +185,21 @@ export const CONFIG = {
     codeLength: 4,
     appId: 'jelly-brawl',
     /** 固定版本的 CDN。联机才动态加载，单机不依赖网络。 */
-    trystero: 'https://cdn.jsdelivr.net/npm/@trystero-p2p/torrent@0.26.0/+esm',
+    trystero: 'https://cdn.jsdelivr.net/npm/@trystero-p2p/mqtt@0.26.0/+esm',
     qr: 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm',
+    /** MQTT 信令服务器。国内节点放第一个，手机不翻墙也能配对。 */
+    relays: [
+      'wss://broker-cn.emqx.io:8084/mqtt',
+      'wss://broker.emqx.io:8084/mqtt',
+      'wss://broker.hivemq.com:8884/mqtt',
+    ],
+    /** 打洞用的 STUN。谷歌的在国内常被墙，前面放国内能连的。 */
+    stun: [
+      'stun:stun.miwifi.com:3478',
+      'stun:stun.chat.bilibili.com:3478',
+      'stun:stun.cloudflare.com:3478',
+      'stun:stun.l.google.com:19302',
+    ],
     /** 填 TURN 配置后，对称 NAT 也能连。见 NETWORK_NOTES.md */
     turn: null,
   },

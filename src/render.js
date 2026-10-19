@@ -236,7 +236,7 @@ function drawHud(ctx, state) {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = CONFIG.theme.ink;
-  if (state.phase === 'LOBBY' || state.phase === 'ROOM') {
+  if (state.phase === 'LOBBY') {
     ctx.font = '700 40px "Trebuchet MS", "Segoe UI", sans-serif';
     ctx.fillText('Jelly Brawl', W / 2, 36);
   }

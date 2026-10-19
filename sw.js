@@ -1,5 +1,5 @@
 /** 发新版本时把这个数字加 1，激活时会删掉旧缓存。 */
-const CACHE_VERSION = 14;
+const CACHE_VERSION = 16;
 const CACHE = `jelly-brawl-v${CACHE_VERSION}`;
 
 const ASSETS = [

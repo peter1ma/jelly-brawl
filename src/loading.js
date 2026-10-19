@@ -65,6 +65,7 @@ async function fetchOne(url) {
 let clockOn = true;
 
 const portraitPhone = window.matchMedia('(orientation: portrait) and (pointer: coarse)');
+const touchPhone = window.matchMedia('(pointer: coarse)');
 
 function fullscreenOn() {
   return !!(document.fullscreenElement || document.webkitFullscreenElement);
@@ -86,8 +87,9 @@ function lockLandscape() {
   if (pending?.catch) pending.catch(() => {});
 }
 
-/** 加载页就开始横屏全屏。没人点击时浏览器会拒绝，点一下再进。 */
+/** 手机从加载页就开始横屏全屏。电脑不自动全屏。没人点击时浏览器会拒绝，点一下再进。 */
 function enterStage(event) {
+  if (!touchPhone.matches) return;
   if (event?.target?.closest?.('#exit-full, #join, #update')) return;
   lockLandscape();
   if (fullscreenOn()) return;

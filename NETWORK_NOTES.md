@@ -1,6 +1,6 @@
 # 联机与 TURN
 
-果冻擂台的联机不自建服务器。信令走 Trystero 的公共 BitTorrent tracker，版本固定在 `src/config.js` 的 `net.trystero`。媒体数据是浏览器之间的 WebRTC，默认只带公共 STUN。
+果冻擂台的联机不自建服务器。信令走 Trystero 的 MQTT 版本，连公共 MQTT 服务器，版本固定在 `src/config.js` 的 `net.trystero`。服务器列表在 `net.relays`，EMQX 国内节点排第一。国外的 BitTorrent tracker 在国内手机上经常连不上，所以没有用。游戏数据是浏览器之间的 WebRTC，STUN 列表在 `net.stun`，国内能连的排在前面。
 
 两台电脑在同一网络里通常能直接连上。一边是对称 NAT、公司网或移动数据时，直连会失败，需要 TURN 做中继。流量只有连不上的那一对才走 TURN，内容仍然端到端加密。
 
